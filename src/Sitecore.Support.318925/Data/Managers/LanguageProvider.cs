@@ -108,7 +108,8 @@ namespace Sitecore.Support.Data.Managers
 
       CultureInfo cultureInfo = Language.GetCultureInfo(cultureName);
 
-      if (cultureInfo.NativeName.ToLowerInvariant().Contains("unknown language"))
+      var nativeName = cultureInfo.NativeName.ToLowerInvariant();
+      if (nativeName.Contains("unknown language") || nativeName.Contains("unknown locale"))
       {
         return null;
       }
